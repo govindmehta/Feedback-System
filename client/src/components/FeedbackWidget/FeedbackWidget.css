@@ -1,0 +1,609 @@
+/* ──────────────────────────────────────────────────────────────────────────────
+   FeedbackWidget — All component styles
+   ────────────────────────────────────────────────────────────────────────────── */
+
+/* ── Container ────────────────────────────────────────────────────────────── */
+.fw-container {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  font-family: var(--font);
+}
+
+/* ── Trigger Button ───────────────────────────────────────────────────────── */
+.fw-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 10px 18px 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  user-select: none;
+}
+
+.fw-trigger:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(108, 99, 255, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fw-trigger--active {
+  background: #3d3d52;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fw-trigger--active:hover {
+  background: #4a4a60;
+}
+
+.fw-trigger-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fw-trigger-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.fw-trigger-label {
+  white-space: nowrap;
+}
+
+/* ── 2×2 Menu Grid ───────────────────────────────────────────────────────── */
+.fw-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: var(--shadow-lg);
+  animation: fw-fade-up 0.18s ease;
+}
+
+@keyframes fw-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fw-menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  padding: 0;
+}
+
+.fw-menu-item:hover {
+  background: rgba(var(--item-color-rgb, 108, 99, 255), 0.1);
+  border-color: var(--item-color);
+  color: var(--item-color);
+  transform: scale(1.06);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--item-color) 30%, transparent);
+}
+
+.fw-menu-icon {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.fw-menu-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.fw-menu-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+/* ── Backdrop ─────────────────────────────────────────────────────────────── */
+.fw-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fw-backdrop-in 0.15s ease;
+}
+
+@keyframes fw-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Modal ────────────────────────────────────────────────────────────────── */
+.fw-modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: fw-modal-in 0.2s ease;
+}
+
+.fw-modal--wide {
+  max-width: 580px;
+}
+
+@keyframes fw-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ── Modal Header ─────────────────────────────────────────────────────────── */
+.fw-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.fw-modal-title {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-primary);
+}
+
+.fw-modal-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fw-modal-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fw-modal-icon--text  { background: rgba(108, 99, 255, 0.15); color: #6c63ff; }
+.fw-modal-icon--audio { background: rgba(34, 197, 94, 0.15);  color: #22c55e; }
+.fw-modal-icon--screen{ background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+
+.fw-modal-close {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  padding: 0;
+}
+
+.fw-modal-close:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+}
+
+.fw-modal-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Modal Body & Footer ──────────────────────────────────────────────────── */
+.fw-modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fw-modal-footer {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+/* ── Form Elements ────────────────────────────────────────────────────────── */
+.fw-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fw-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.fw-label-muted {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.fw-textarea {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 12px;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.fw-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.fw-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.fw-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 9px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s, box-shadow 0.15s;
+}
+
+.fw-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.fw-btn--primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.fw-btn--primary:not(:disabled):hover {
+  background: var(--accent-hover);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.fw-btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.fw-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+}
+
+/* ── Image Upload ─────────────────────────────────────────────────────────── */
+.fw-image-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fw-drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.fw-drop-zone:hover {
+  border-color: var(--accent);
+  color: var(--text-secondary);
+  background: rgba(108, 99, 255, 0.04);
+}
+
+.fw-image-preview {
+  position: relative;
+  display: inline-block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-width: 100%;
+  border: 1px solid var(--border);
+}
+
+.fw-image-preview img {
+  display: block;
+  max-height: 160px;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.fw-image-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.fw-image-remove:hover {
+  background: var(--danger);
+}
+
+/* ── Recorder UI ──────────────────────────────────────────────────────────── */
+.fw-recorder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.fw-record-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.12s, box-shadow 0.15s;
+}
+
+.fw-record-btn--start {
+  background: var(--danger);
+  color: #fff;
+}
+
+.fw-record-btn--start:hover {
+  background: #dc2626;
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.35);
+}
+
+.fw-record-btn--stop {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.fw-record-btn--stop:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.fw-record-btn--secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  padding: 7px 16px;
+}
+
+.fw-record-btn--secondary:hover {
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
+
+/* ── Pulse indicator ──────────────────────────────────────────────────────── */
+.fw-recording-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.fw-pulse-ring {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--danger);
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+  animation: fw-pulse 1.2s ease-in-out infinite;
+}
+
+.fw-pulse-ring--screen {
+  background: #f59e0b;
+  box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5);
+}
+
+@keyframes fw-pulse {
+  0%   { box-shadow: 0 0 0 0 currentColor; }
+  70%  { box-shadow: 0 0 0 10px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.fw-timer {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+.fw-recording-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ── Audio player ─────────────────────────────────────────────────────────── */
+.fw-audio-review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.fw-audio-player {
+  width: 100%;
+  border-radius: var(--radius);
+  outline: none;
+}
+
+/* ── Video player ─────────────────────────────────────────────────────────── */
+.fw-video-review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.fw-video-player {
+  width: 100%;
+  border-radius: var(--radius);
+  background: #000;
+  max-height: 260px;
+  outline: none;
+}
+
+/* ── Screen idle ──────────────────────────────────────────────────────────── */
+.fw-screen-idle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.fw-screen-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ── Success state ────────────────────────────────────────────────────────── */
+.fw-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 20px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.fw-success-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--success);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  animation: fw-scale-in 0.25s ease;
+}
+
+@keyframes fw-scale-in {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* ── Error message ────────────────────────────────────────────────────────── */
+.fw-error {
+  font-size: 13px;
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  line-height: 1.5;
+}
+
+/* ── Spinner ──────────────────────────────────────────────────────────────── */
+.fw-spinner {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: fw-spin 0.7s linear infinite;
+}
+
+@keyframes fw-spin {
+  to { transform: rotate(360deg); }
+}

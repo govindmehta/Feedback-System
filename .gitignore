@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+public/feedback/audio/
+public/feedback/video/
+public/feedback/text/
+public/feedback/image/
+*.log
