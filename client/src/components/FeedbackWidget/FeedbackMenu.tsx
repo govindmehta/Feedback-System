@@ -68,7 +68,7 @@ const actions: MenuAction[] = [
 export default function FeedbackMenu({ onSelect, onClose }: Props) {
   const handleSelect = (mode: FeedbackMode) => {
     if (mode === 'schedule') {
-      window.open('INSERT_YOUR_CALENDLY_URL', '_blank', 'noopener,noreferrer');
+      window.open('INSERT_YOUR_GOOGLE_MEET_SCHEDULER_LINK', '_blank', 'noopener,noreferrer');
       onClose();
       return;
     }
